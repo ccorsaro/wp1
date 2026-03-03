@@ -108,11 +108,11 @@
                 <div class="lista-processi" id="listaProcessi">
                     <div class="processo-item active" data-processo="1">1. P1 Interconnection</div>
                     <div class="processo-item" data-processo="2">2. TiO₂ Sputtering Deposition</div>
-                    <div class="processo-item" data-processo="3">3. Perovskite Ultrasonic Spray</div>
-                    <div class="processo-item" data-processo="4">4. P2 Scribe</div>
-                    <div class="processo-item" data-processo="5">5. Carbon Layer Deposition</div>
-                    <div class="processo-item" data-processo="6">6. P3 Scribe</div>
-                    <div class="processo-item" data-processo="7">7. Module Encapsulation</div>
+                    <div class="processo-item" data-processo="3">3. P2 Scribe</div>
+                    <div class="processo-item" data-processo="4">4. Perovskite Ultrasonic Spray</div>
+                    <div class="processo-item" data-processo="5">5. Spiro-OMeTAD Deposition</div>
+                    <div class="processo-item" data-processo="6">6. Graphene Deposition</div>
+                    <div class="processo-item" data-processo="7">7. P3 Scribe</div>
                 </div>
             </div>
             
@@ -177,6 +177,18 @@ Thickness = ~50 nm`,
                 immagine: "TiO2dep.png"
             },
             3: {
+                nome: "P2 Scribe",
+                parametri: `Laser power = 0.8 W
+Scan speed = 80 mm/s
+Mark loop = 1 pass
+Offset from P1 = 200 μm
+Line width = ~50 μm
+Depth control = optimized`,
+                descrizione: `✂️ P2 Laser Scribing: P2 scribing to remove only the TiO₂ layer and open an aperture for the interconnects.`,
+                video: "P2.mp4",
+                immagine: "P2.png"
+            },
+            4: {
                 nome: "Perovskite Spray",
                 parametri: `Solution = MAPbI₃ in DMF
 Ultrasonic frequency = 1.7 MHz
@@ -188,31 +200,31 @@ Passes = 3 layers`,
                 video: "perovskite_spray.mp4",
                 immagine: "perovskite.png"
             },
-            4: {
-                nome: "P2 Scribe",
-                parametri: `Laser power = 0.8 W
-Scan speed = 80 mm/s
-Mark loop = 1 pass
-Offset from P1 = 200 μm
-Line width = ~50 μm
-Depth control = optimized`,
-                descrizione: `✂️ P2 Laser Scribing: Removes perovskite layer to define cell boundaries and create series connections.`,
-                video: "P2.mp4",
-                immagine: "P2.png"
-            },
             5: {
-                nome: "Carbon Deposition",
+                nome: "Spiro-OMeTAD Deposition",
                 parametri: `Carbon ink = C paste
 Deposition method = Doctor blade
 Thickness = 10-15 μm
 Drying temp = 100°C
 Drying time = 10 min
 Annealing = 120°C / 15 min`,
-                descrizione: `⚫ Carbon Layer: HTL and back contact deposited over perovskite, filling P2 scribes.`,
-                video: "carbon_dep.mp4",
-                immagine: "carbon.png"
+                descrizione: `⚫ Spiro-OMeTAD deposited as HTL over perovskite, filling P2 scribes.`,
+                video: "spiro.mp4",
+                immagine: "step5spiro.png"
             },
             6: {
+                nome: "Graphene Deposition",
+                parametri: `Encapsulant = EVA film
+Glass thickness = 1.1 mm
+Lamination temp = 140°C
+Lamination pressure = 50 kPa
+Time = 15 min
+Edge sealing = epoxy`,
+                descrizione: `🛡️ Ultrasonic Spraying Deposition of Graphene as Back Electrode.`,
+                video: "graphene.mp4",
+                immagine: "step6gra.png"
+            },
+            7: {
                 nome: "P3 Scribe",
                 parametri: `Laser power = 1.2 W
 Scan speed = 100 mm/s
@@ -221,20 +233,8 @@ Offset from P2 = 150 μm
 Final line width = ~60 μm
 Edge alignment = ±10 μm`,
                 descrizione: `🔪 P3 Laser Scribing: Final scribe separates individual modules and completes series interconnection.`,
-                video: "P3.mp4",
-                immagine: "P3.png"
-            },
-            7: {
-                nome: "Encapsulation",
-                parametri: `Encapsulant = EVA film
-Glass thickness = 1.1 mm
-Lamination temp = 140°C
-Lamination pressure = 50 kPa
-Time = 15 min
-Edge sealing = epoxy`,
-                descrizione: `🛡️ Module Encapsulation: EVA lamination with glass provides mechanical protection and long-term stability.`,
-                video: "encapsulation.mp4",
-                immagine: "encapsulated.png"
+                video: "All.mp4",
+                immagine: "step7.png"
             }
         };
 
