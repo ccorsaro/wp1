@@ -1,0 +1,277 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>WP1 – Task1.2 - Prof. Carmelo Corsaro</title>
+    <meta charset="UTF-8">
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body { font-family: 'Segoe UI', Arial; background: #f5f5f5; padding: 20px; }
+        .container { max-width: 1400px; margin: 0 auto; }
+        
+        .header { 
+            background: linear-gradient(90deg, #2c3e50 0%, #3498db 50%, #2980b9 100%); 
+            color: white; padding: 30px; border-radius: 15px; 
+            box-shadow: 0 8px 25px rgba(0,0,0,0.2); margin-bottom: 25px; min-height: 180px;
+            display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 15px; position: relative;
+        }
+        
+        .logo-central { height: 100px; margin-bottom: 10px; }
+        .header-title { text-align: center; }
+        .header h1 { font-size: 36px; margin: 0 0 5px 0; font-weight: bold; }
+        .header h2 { font-size: 18px; opacity: 0.95; margin: 0; max-width: 900px; line-height: 1.4; }
+        
+        .header-right { 
+            position: absolute; top: 20px; right: 20px; text-align: right; 
+            background: rgba(255,255,255,0.15); padding: 15px 20px; border-radius: 10px;
+        }
+        .professori { font-size: 14px; margin-top: 5px; }
+        .professori strong { font-size: 16px; display: block; margin-bottom: 5px; }
+        
+        .download-btn-main { 
+            background: linear-gradient(90deg, #27ae60, #2ecc71); 
+            color: white; border: none; padding: 12px 25px; border-radius: 30px; 
+            font-size: 15px; font-weight: bold; cursor: pointer; text-decoration: none; 
+            box-shadow: 0 6px 20px rgba(39,174,96,0.4); transition: all 0.3s ease; 
+            display: block; margin: 10px auto 0; width: fit-content;
+        }
+        .download-btn-main:hover { transform: translateY(-3px); box-shadow: 0 10px 30px rgba(39,174,96,0.5); }
+        
+        .descrizione-generale { 
+            background: rgba(255,255,255,0.9); border-left: 6px solid #3498db; 
+            padding: 20px; margin: 0 25px 25px; border-radius: 0 10px 10px 0; 
+            box-shadow: 0 4px 15px rgba(0,0,0,0.1); font-size: 16px; line-height: 1.6;
+        }
+        
+        .main { display: flex; gap: 25px; margin-bottom: 20px; }
+        .left-panel { width: 28%; background: white; border-radius: 12px; padding: 25px; box-shadow: 0 6px 20px rgba(0,0,0,0.1); height: 650px; }
+        .right-panel { width: 72%; background: white; border-radius: 12px; padding: 25px; box-shadow: 0 6px 20px rgba(0,0,0,0.1); display: flex; gap: 25px; }
+        
+        .processi-title { font-weight: bold; color: #2c3e50; margin-bottom: 20px; font-size: 18px; border-bottom: 3px solid #3498db; padding-bottom: 10px; }
+        .lista-processi { width: 100%; height: 85%; border: 3px solid #3498db; border-radius: 10px; padding: 15px; font-size: 14px; cursor: pointer; background: linear-gradient(145deg, #ecf0f1, #ffffff); overflow-y: auto; }
+        .processo-item { padding: 12px 15px; margin-bottom: 6px; background: rgba(52,152,219,0.1); border-radius: 8px; transition: all 0.3s ease; border-left: 5px solid #3498db; }
+        .processo-item:hover { background: rgba(52,152,219,0.25); transform: translateX(5px); box-shadow: 0 4px 12px rgba(52,152,219,0.2); }
+        .processo-item.active { background: linear-gradient(90deg, #3498db, #2980b9); color: white; box-shadow: 0 6px 20px rgba(52,152,219,0.4); }
+        
+        .parametri-section { flex: 1; height: 500px; display: flex; flex-direction: column; gap: 15px; }
+        .parametri-top { flex: 1; }
+        .parametri-bottom { flex: 1; }
+        .parametri-title { font-weight: bold; color: #2c3e50; margin-bottom: 12px; font-size: 16px; border-bottom: 2px solid #27ae60; padding-bottom: 8px; }
+        .parametri { background: #f8f9fa; border: 2px solid #27ae60; border-radius: 10px; padding: 18px; overflow-y: auto; font-family: 'Courier New', monospace; font-size: 14px; line-height: 1.6; }
+        .immagine-processo { height: 100%; border: 2px solid #f39c12; border-radius: 10px; background-size: cover; background-position: center; position: relative; overflow: hidden; }
+        .immagine-overlay { position: absolute; top: 0; left: 0; right: 0; bottom: 0; background: rgba(243,156,18,0.85); color: white; display: flex; flex-direction: column; align-items: center; justify-content: center; font-size: 14px; text-align: center; opacity: 0; transition: opacity 0.3s ease; }
+        .immagine-processo:hover .immagine-overlay { opacity: 1; }
+        
+        .video-section { flex: 1; height: 500px; }
+        .video-container { width: 100%; height: 100%; border: 3px solid #e74c3c; border-radius: 12px; background: #34495e; position: relative; overflow: hidden; }
+        .video-container video { width: 100%; height: 100%; object-fit: cover; }
+        .video-overlay { position: absolute; top: 0; left: 0; right: 0; bottom: 0; background: rgba(0,0,0,0.7); display: flex; flex-direction: column; align-items: center; justify-content: center; color: white; z-index: 2; }
+        
+        .descrizione-specifica { background: linear-gradient(90deg, #3498db, #2980b9); color: white; padding: 25px; border-radius: 12px; text-align: center; font-size: 15px; line-height: 1.7; box-shadow: 0 6px 20px rgba(52,152,219,0.3); }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <!-- HEADER CON LOGO CENTRALE + TITOLO SOTTO -->
+        <div class="header">
+            <img src="logo_unime.png" class="logo-central" alt="Università di Messina" onerror="this.style.display='none'">
+            
+            <div class="header-title">
+                <h1>🧮 WP1 – Task1.2</h1>
+                <h2>Sequential Laser Scribing and Deposition: Alternating P1/P2/P3 Micromachining with Ultrasonic-Sprayed Perovskite and Carbon Layers</h2>
+            </div>
+            
+<div class="header-right">
+    <div class="professori">
+        <strong>Principal Investigators</strong>
+        <div><strong>Prof. Fortunato Neri</strong> (Task leader)</div>
+        <div>Prof.ssa Enza Fazio</div>
+        <div>Prof. Carmelo Corsaro</div>
+    </div>
+    <a href="protocollo_completo.pdf" class="download-btn-main" download>📥 Complete PDF</a>
+</div>
+        </div>
+        
+        <!-- DESCRIZIONE GENERALE -->
+        <div class="descrizione-generale">
+            <strong>🌐 Full Workflow:</strong> Definition of a laser scribing protocol for fine patterning (P1, P2, P3 scribes) 
+            to interconnect perovskite solar cells, alternating in situ scribing processes with deposition steps 
+            without moving the sample.
+        </div>
+        
+        <!-- MAIN (invariato con 7 processi) -->
+        <div class="main">
+            <div class="left-panel">
+                <div class="processi-title">📋 Protocol Steps</div>
+                <div class="lista-processi" id="listaProcessi">
+                    <div class="processo-item active" data-processo="1">1. P1 Interconnection</div>
+                    <div class="processo-item" data-processo="2">2. TiO₂ Sputtering Deposition</div>
+                    <div class="processo-item" data-processo="3">3. Perovskite Ultrasonic Spray</div>
+                    <div class="processo-item" data-processo="4">4. P2 Scribe</div>
+                    <div class="processo-item" data-processo="5">5. Carbon Layer Deposition</div>
+                    <div class="processo-item" data-processo="6">6. P3 Scribe</div>
+                    <div class="processo-item" data-processo="7">7. Module Encapsulation</div>
+                </div>
+            </div>
+            
+            <div class="right-panel">
+                <div class="parametri-section">
+                    <div class="parametri-top">
+                        <div class="parametri-title">⚙️ Process Parameters</div>
+                        <div id="parametri" class="parametri">Loading...</div>
+                    </div>
+                    <div class="parametri-bottom">
+                        <div class="parametri-title">📊 Process Image</div>
+                        <div id="immagineProcesso" class="immagine-processo" style="background-image: url('P1.png');">
+                            <div class="immagine-overlay">Loading image...</div>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="video-section">
+                    <div class="parametri-title">🎥 Process Video</div>
+                    <div class="video-container" id="videoContainer">
+                        <div class="video-overlay">
+                            <div>📹 Loading video...</div>
+                            <div style="font-size: 14px; margin-top: 10px;">P1.mp4</div>
+                        </div>
+                        <video id="videoPlayer" style="display: none;" muted loop preload="metadata"></video>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        <div id="descrizione" class="descrizione-specifica">
+            Loading process description...
+        </div>
+    </div>
+
+    <!-- SCRIPT INVARIATO (7 processi completi) -->
+    <script>
+        const processi = {
+            1: {
+                nome: "P1 Interconnection",
+                parametri: `Laser power = 1.0 W
+Scan speed = 50 mm/s
+Mark loop = 2 passes
+Wavelength = 532 nm
+Repetition rate = 10 kHz
+Pulse duration = 8 ps
+Line width = ~70 μm`,
+                descrizione: `🧮 P1 Laser Scribing: Creates isolated lines on FTO layer for series interconnection of solar cells.`,
+                video: "P1.mp4",
+                immagine: "P1.png"
+            },
+            2: {
+                nome: "TiO₂ Deposition",
+                parametri: `Sputtering power = 150 W
+Pressure = 3 mTorr
+Ar flow = 20 sccm
+Target-substrate distance = 8 cm
+Deposition time = 15 min
+Thickness = ~50 nm`,
+                descrizione: `🎯 TiO₂ Sputtering: Fills P1 scribe and forms Electron Transport Layer (ETL) for perovskite cells.`,
+                video: "sputt.mp4",
+                immagine: "TiO2dep.png"
+            },
+            3: {
+                nome: "Perovskite Spray",
+                parametri: `Solution = MAPbI₃ in DMF
+Ultrasonic frequency = 1.7 MHz
+Flow rate = 0.5 ml/min
+Substrate temp = 100°C
+Nozzle height = 10 cm
+Passes = 3 layers`,
+                descrizione: `🌈 Perovskite Deposition: Ultrasonic spray coating creates uniform absorber layer over TiO₂ ETL.`,
+                video: "perovskite_spray.mp4",
+                immagine: "perovskite.png"
+            },
+            4: {
+                nome: "P2 Scribe",
+                parametri: `Laser power = 0.8 W
+Scan speed = 80 mm/s
+Mark loop = 1 pass
+Offset from P1 = 200 μm
+Line width = ~50 μm
+Depth control = optimized`,
+                descrizione: `✂️ P2 Laser Scribing: Removes perovskite layer to define cell boundaries and create series connections.`,
+                video: "P2.mp4",
+                immagine: "P2.png"
+            },
+            5: {
+                nome: "Carbon Deposition",
+                parametri: `Carbon ink = C paste
+Deposition method = Doctor blade
+Thickness = 10-15 μm
+Drying temp = 100°C
+Drying time = 10 min
+Annealing = 120°C / 15 min`,
+                descrizione: `⚫ Carbon Layer: HTL and back contact deposited over perovskite, filling P2 scribes.`,
+                video: "carbon_dep.mp4",
+                immagine: "carbon.png"
+            },
+            6: {
+                nome: "P3 Scribe",
+                parametri: `Laser power = 1.2 W
+Scan speed = 100 mm/s
+Mark loop = 1 pass
+Offset from P2 = 150 μm
+Final line width = ~60 μm
+Edge alignment = ±10 μm`,
+                descrizione: `🔪 P3 Laser Scribing: Final scribe separates individual modules and completes series interconnection.`,
+                video: "P3.mp4",
+                immagine: "P3.png"
+            },
+            7: {
+                nome: "Encapsulation",
+                parametri: `Encapsulant = EVA film
+Glass thickness = 1.1 mm
+Lamination temp = 140°C
+Lamination pressure = 50 kPa
+Time = 15 min
+Edge sealing = epoxy`,
+                descrizione: `🛡️ Module Encapsulation: EVA lamination with glass provides mechanical protection and long-term stability.`,
+                video: "encapsulation.mp4",
+                immagine: "encapsulated.png"
+            }
+        };
+
+        const videoPlayer = document.getElementById('videoPlayer');
+        let currentVideoSrc = '';
+
+        aggiornaProcesso(1);
+
+        document.querySelectorAll('.processo-item').forEach(item => {
+            item.addEventListener('click', function() {
+                document.querySelectorAll('.processo-item').forEach(i => i.classList.remove('active'));
+                this.classList.add('active');
+                aggiornaProcesso(parseInt(this.dataset.processo));
+            });
+        });
+
+        function aggiornaProcesso(idx) {
+            const proc = processi[idx];
+            
+            document.getElementById('parametri').innerHTML = proc.parametri.replace(/\n/g, '<br>');
+            document.getElementById('immagineProcesso').style.backgroundImage = `url('${proc.immagine}')`;
+            document.querySelector('#immagineProcesso .immagine-overlay').innerHTML = 
+                `📊 ${proc.nome}<br><small>${proc.immagine}</small>`;
+            
+            if (currentVideoSrc !== proc.video) {
+                videoPlayer.src = proc.video;
+                currentVideoSrc = proc.video;
+                videoPlayer.load();
+            }
+            document.querySelector('#videoContainer .video-overlay').innerHTML = 
+                `<div>📹 ${proc.nome}</div><div style="font-size: 14px; margin-top: 10px;">${proc.video}</div>`;
+            
+            document.getElementById('descrizione').innerHTML = proc.descrizione;
+        }
+
+        videoPlayer.addEventListener('loadeddata', function() {
+            document.querySelector('#videoContainer .video-overlay').style.opacity = '0';
+            videoPlayer.style.display = 'block';
+            videoPlayer.play().catch(e => console.log('Autoplay blocked'));
+        });
+    </script>
+</body>
+</html>
