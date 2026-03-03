@@ -67,6 +67,71 @@
         .video-overlay { position: absolute; top: 0; left: 0; right: 0; bottom: 0; background: rgba(0,0,0,0.7); display: flex; flex-direction: column; align-items: center; justify-content: center; color: white; z-index: 2; }
         
         .descrizione-specifica { background: linear-gradient(90deg, #3498db, #2980b9); color: white; padding: 25px; border-radius: 12px; text-align: center; font-size: 15px; line-height: 1.7; box-shadow: 0 6px 20px rgba(52,152,219,0.3); }
+    
+/* ✅ MOBILE RESPONSIVE - Fissa nomi professori coperti */
+@media (max-width: 768px) {
+    .header {
+        flex-direction: column !important;
+        padding: 15px !important;
+        gap: 10px !important;
+        min-height: auto !important;
+    }
+    
+    .logo-central {
+        height: 70px !important;
+        order: 1;
+    }
+    
+    .header-title {
+        order: 2;
+        min-width: auto !important;
+        width: 100% !important;
+    }
+    
+    .header h1 {
+        font-size: 26px !important;
+    }
+    
+    .header h2 {
+        font-size: 14px !important;
+        padding: 0 10px !important;
+    }
+    
+    .header-right {
+        position: static !important;
+        order: 3;
+        width: 100% !important;
+        text-align: center !important;
+        padding: 10px 0 !important;
+    }
+    
+    .professori {
+        font-size: 13px !important;
+        padding: 8px 15px !important;
+        margin-bottom: 10px !important;
+    }
+    
+    .download-btn-main {
+        margin: 0 auto !important;
+        padding: 10px 20px !important;
+        font-size: 14px !important;
+    }
+    
+    .main {
+        flex-direction: column !important;
+        gap: 15px !important;
+    }
+    
+    .left-panel, .right-panel {
+        width: 100% !important;
+    }
+    
+    .lista-processi {
+        height: 300px !important;
+    }
+}
+
+        
     </style>
 </head>
 <body>
@@ -275,3 +340,4 @@ Edge sealing = epoxy`,
     </script>
 </body>
 </html>
+
