@@ -297,7 +297,7 @@ max-height:220px;
 
 <div class="header-title">
 <h1>🧮 WP1 – Task1.2</h1>
-<h2>Sequential Laser Scribing and Deposition: Alternating P1/P2/P3 Micromachining with Ultrasonic-Sprayed Perovskite and Carbon Layers</h2>
+<h2>Sequential Laser Scribing and Deposition: Alternating P1/P2/P3 Micromachining with Sputtered/Ultrasonic-Sprayed Layers</h2>
 </div>
 
 <div class="header-middle-image">
@@ -380,66 +380,62 @@ const processi={
 
 1:{parametri:`Laser power = 1.0 W
 Scan speed = 50 mm/s
-Mark loop = 2 passes
+Mark loops = 2 
 Wavelength = 532 nm
-Repetition rate = 10 kHz
-Pulse duration = 8 ps
-Line width = ~70 μm`,
-descrizione:`🧮 P1 Laser Scribing: Creates isolated lines on FTO layer for series interconnection.`,
+Repetition rate = 160 kHz
+Pulse duration = 6-8 ps`,
+descrizione:`🧮 P1 Laser Scribing: isolated lines realization on FTO layer for series electrical interconnections.`,
 video:"P1.mp4",immagine:"P1.png"},
 
-2:{parametri:`Sputtering power = 150 W
-Pressure = 3 mTorr
-Ar flow = 20 sccm
-Target-substrate distance = 8 cm
-Deposition time = 15 min
-Thickness = ~50 nm`,
-descrizione:`🎯 TiO₂ Sputtering: Forms Electron Transport Layer.`,
+2:{parametri:`Sputtering power = 50 W
+Cathode type = RF
+Ar flow = 50 sccm
+Deposition time = 180 min
+Temperature = 460 °C`,
+descrizione:`🎯 TiO₂ Layer Deposition: TiO₂ film sputtering to fill the P1 scribe and form the Electron Transport Layer.`,
 video:"sputt.mp4",immagine:"TiO2dep.png"},
 
-3:{parametri:`Laser power = 0.8 W
-Scan speed = 80 mm/s
-Mark loop = 1 pass
-Offset from P1 = 200 μm
-Line width = ~50 μm
-Depth control = optimized`,
-descrizione:`✂️ P2 Laser Scribing.`,
+3:{parametri:`Laser power = 0.3 W
+Scan speed = 50 mm/s
+Mark loop = 1
+Wavelength = 532 nm
+Repetition rate = 160 kHz
+Pulse duration = 6-8 ps`,
+descrizione:`✂️ P2 Laser Scribing: TiO₂ layer removal to open an aperture for electrical interconnections.`,
 video:"P2.mp4",immagine:"P2.png"},
 
-4:{parametri:`Solution = MAPbI₃ in DMF
-Ultrasonic frequency = 1.7 MHz
-Flow rate = 0.5 ml/min
-Substrate temp = 100°C
-Nozzle height = 10 cm
-Passes = 3 layers`,
-descrizione:`🌈 Perovskite Ultrasonic Spray.`,
+4:{parametri:`Pervoskite solution in DMF
+Ultrasonic source frequency = 2.4 MHz
+Flow rate = 0.01 ml/min
+Substrate temp = 100 °C
+Overall Deposition time = 30 min (2 min each X-Y scan)
+Post deposition annealing = T = 100 °C, t = 90 min`,
+descrizione:`🌈 Perovskite Deposition: solar cell Active Layer deposited by Ultrasonic Spraying of liquid solution.`,
 video:"perovskite_spray.mp4",immagine:"perovskite.png"},
 
-5:{parametri:`Carbon ink = C paste
-Deposition method = Doctor blade
-Thickness = 10-15 μm
-Drying temp = 100°C
-Drying time = 10 min
-Annealing = 120°C / 15 min`,
-descrizione:`⚫ Spiro-OMeTAD deposition.`,
+5:{parametri:`Solution = Spiro-OMeTAD deposition
+Ultrasonic source frequency = 2.4 MHz
+Flow rate = 0.01 ml/min
+Substrate temp = 100 °C
+Overall Deposition time = 10 min (2 min each X-Y scan)`,
+descrizione:`⚫ Spiro-OMeTAD Deposition: Hole Transport Layer deposited by Ultrasonic Spraying of liquid solution.`,
 video:"spiro.mp4",immagine:"step5spiro.png"},
 
-6:{parametri:`Encapsulant = EVA film
-Glass thickness = 1.1 mm
-Lamination temp = 140°C
-Lamination pressure = 50 kPa
-Time = 15 min
-Edge sealing = epoxy`,
-descrizione:`🛡️ Graphene back electrode.`,
+6:{parametri:`Solution = Graphene water dispersion
+Ultrasonic source frequency = 2.4 MHz
+Flow rate = 0.01 ml/min
+Substrate temp = 100 °C
+Overall Deposition time = 10 min (2 min each X-Y scan)`,
+descrizione:`🛡️ Graphene Deposition: back electrode deposited by Ultrasonic Spraying of liquid solution.`,
 video:"graphene.mp4",immagine:"step6gra.png"},
 
-7:{parametri:`Laser power = 1.2 W
-Scan speed = 100 mm/s
-Mark loop = 1 pass
-Offset from P2 = 150 μm
-Final line width = ~60 μm
-Edge alignment = ±10 μm`,
-descrizione:`🔪 P3 Final scribe.`,
+7:{parametri:`Laser power = 1.5 W
+Scan speed = 50 mm/s
+Mark loopS = 2 
+Wavelength = 532 nm
+Repetition rate = 160 kHz
+Pulse duration = 6-8 ps`,
+descrizione:`🔪 P3 Laser scribing: all layers removal down to TiO₂ layer to achieve cells electrical insulation.`,
 video:"All.mp4",immagine:"step7.png"}
 
 };
